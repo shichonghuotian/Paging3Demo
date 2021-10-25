@@ -35,7 +35,8 @@ class PersonPagingSource(val reqBody: ReqBody) : PagingSource<Int, Person>() {
                     searchBoys(from = fromIndex, loadSize)
 
                 if(responseList.isEmpty() ) {
-
+                    //请求结束的时， 可以返回一个特殊的异常， 来标记这个已经加载完成了
+                        // 然后重试的时候修改一下type， 重新请求一遍就可以加载girl数据
                     return LoadResult.Error(LoadMoreException())
                 }else {
 
