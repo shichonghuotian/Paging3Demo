@@ -19,7 +19,6 @@ class PersonAdapter(val loadMoreAction: ((PersonAdapter) -> Unit)?) : PagingData
 
         return when(getItem(position)) {
             is PersonUiModel.PersonModel ->  R.layout.item_person
-            //这个loadmore没有用， 懒得去掉了
             is PersonUiModel.LoadMoreModel ->  R.layout.item_load_more
             else -> throw IllegalStateException("Unknown view")
         }
@@ -60,7 +59,7 @@ class PersonAdapter(val loadMoreAction: ((PersonAdapter) -> Unit)?) : PagingData
         when(holder) {
             is ItemViewHolder ->  {
                 item as PersonUiModel.PersonModel
-                holder.binding.title.text = item.title
+//                holder.binding.title.text = item.title
 
             }
             is LoadMoreViewHolder ->  {

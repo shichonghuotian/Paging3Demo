@@ -18,6 +18,14 @@ import kotlinx.coroutines.launch
 class MainViewModel: ViewModel() {
 
     val repository: PersonRepository = PersonRepository()
+
+     val listData = MutableLiveData(
+        (0..10).map {
+            Boy("a: $it")
+
+        }
+    )
+
     private val _items =  MutableLiveData<PagingData<PersonUiModel>>()
 
     val items: LiveData<PagingData<PersonUiModel>>
